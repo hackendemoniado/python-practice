@@ -41,14 +41,11 @@ def higher_card(card_one, card_two):
     2.  'A' (ace card) = 1
     3.  '2' - '10' = numerical value.
     """
-    if value_of_card(card_one) == value_of_card(card_two) and value_of_card(card_two) == 10 or value_of_card(card_one) == 1:
+    v1, v2 = value_of_card(card_one), value_of_card(card_two)
+
+    if v1 == v2:
         return card_one, card_two
-    elif card_one == card_two and card_one.isdigit():
-        return card_one, card_two
-    if card_one != card_two and value_of_card(card_one) > value_of_card(card_two):
-        return card_one
-    else:
-        return card_two
+    return card_one if v1 > v2 else card_two
 
 def value_of_ace(card_one, card_two) -> int:
     """Calculate the most advantageous value for the ace card.
@@ -60,16 +57,13 @@ def value_of_ace(card_one, card_two) -> int:
     2.  'A' (ace card) = 11 (if already in hand)
     3.  '2' - '10' = numerical value.
     """
+    v1, v2 = value_of_card(card_one), value_of_card(card_two)
 
     if card_one == 'A' or card_two == 'A':
         return 1
 
-    total = value_of_card(card_one) + value_of_card(card_two)
+    return 11 if v1 + v2 + 11 <= 21 else 1
 
-    if total + 11 <= 21:
-        return 11
-    else:
-        return 1
 
 def is_blackjack(card_one, card_two) -> bool:
     """Determine if the hand is a 'natural' or 'blackjack'.
@@ -81,12 +75,8 @@ def is_blackjack(card_one, card_two) -> bool:
     2.  'A' (ace card) = 11 (if already in hand)
     3.  '2' - '10' = numerical value.
     """
-    if ((value_of_card(card_one) == 10 or value_of_card(card_one, True) == 11)
-            and (value_of_card(card_two) == 10 or value_of_card(card_two, True) == 11) and
-            value_of_card(card_one, True) + value_of_card(card_two, True) == 21):
-        return True
-    else:
-        return False
+    v1, v2 = value_of_card(card_one, True), value_of_card(card_two, True)
+    return v1 + v2 == 21 and len({v1, v2}) > 0
 
 def can_split_pairs(card_one, card_two) -> bool:
     """Determine if a player can split their hand into two hands.
@@ -94,12 +84,8 @@ def can_split_pairs(card_one, card_two) -> bool:
     :param card_one, card_two: str - cards dealt.
     :return: bool - can the hand be split into two pairs? (i.e. cards are of the same value).
     """
-    if ((value_of_card(card_one) == 10 and value_of_card(card_two) == 10 or
-            value_of_card(card_one) == 6 and value_of_card(card_two) == 6) or
-            value_of_card(card_one, True) == 11 and value_of_card(card_two, True) == 11):
-        return True
-    else:
-        return False
+    v1, v2 = value_of_card(card_one), value_of_card(card_two)
+    return v1 == v2
 
 print(can_split_pairs('A','A'))
 def can_double_down(card_one, card_two) -> bool:
@@ -110,7 +96,4 @@ def can_double_down(card_one, card_two) -> bool:
     """
 
     total = value_of_card(card_one) + value_of_card(card_two)
-    if 9 <= total <= 11:
-        return True
-    else:
-        return False
+    return 9 <= total <= 11
