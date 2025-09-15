@@ -7,5 +7,3 @@ def steps(number: int) -> int:
         number = number // 2 if number %2 == 0 else number * 3 + 1
         steps += 1
     return steps
-
-print(steps(12))

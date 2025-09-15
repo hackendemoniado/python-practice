@@ -69,22 +69,5 @@ def fail_safe(temperature, neutrons_produced_per_second, threshold) -> str:
     return 'DANGER'
 
 
-def test_fail_safe():
-    # Caso LOW: producción < 90% del threshold
-    assert fail_safe(10, 5, 100) == "LOW"   # 10*5=50 → 50 < 90
-
-    # Caso NORMAL: producción dentro del rango [90%, 110%] del threshold
-    assert fail_safe(9, 11, 100) == "NORMAL"  # 9*11=99 → 99 está entre 90 y 110
-    assert fail_safe(10, 10, 100) == "NORMAL" # exactamente igual al threshold
-    assert fail_safe(11, 10, 100) == "NORMAL" # 110 → límite superior
-
-    # Caso DANGER: producción fuera de los dos rangos anteriores
-    assert fail_safe(12, 10, 100) == "DANGER" # 120 > 110 → peligro
-
-    print("✅ Todos los tests pasaron correctamente")
-
-# Ejecutar pruebas
-test_fail_safe()
-
 
 
