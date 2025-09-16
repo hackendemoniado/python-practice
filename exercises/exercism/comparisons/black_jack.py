@@ -87,7 +87,7 @@ def can_split_pairs(card_one, card_two) -> bool:
     v1, v2 = value_of_card(card_one), value_of_card(card_two)
     return v1 == v2
 
-print(can_split_pairs('A','A'))
+print(can_split_pairs('10','J'))
 def can_double_down(card_one, card_two) -> bool:
     """Determine if a blackjack player can place a double down bet.
 

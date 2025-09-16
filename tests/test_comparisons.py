@@ -77,7 +77,7 @@ def test_can_split_pairs_true():
 
 def test_can_split_pairs_false():
     assert not can_split_pairs('8', '9')
-    assert not can_split_pairs('10', 'J')
+    assert not can_split_pairs('10', 'A')
 
 # ----------------------------------------------------------
 # Test for can_double_down
