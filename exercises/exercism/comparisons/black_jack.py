@@ -9,6 +9,7 @@ def is_valid_card(card: str) -> bool:
     """Verifica si la carta es válida en Blackjack."""
     return card.upper() in VALID_CARDS
 
+
 def value_of_card(card: str, ace_card_eleven: bool = False) -> int | None:
     """Determine the scoring value of a card.
 
@@ -47,6 +48,7 @@ def higher_card(card_one, card_two):
         return card_one, card_two
     return card_one if v1 > v2 else card_two
 
+
 def value_of_ace(card_one, card_two) -> int:
     """Calculate the most advantageous value for the ace card.
 
@@ -78,6 +80,7 @@ def is_blackjack(card_one, card_two) -> bool:
     v1, v2 = value_of_card(card_one, True), value_of_card(card_two, True)
     return v1 + v2 == 21 and len({v1, v2}) > 0
 
+
 def can_split_pairs(card_one, card_two) -> bool:
     """Determine if a player can split their hand into two hands.
 
@@ -87,7 +90,7 @@ def can_split_pairs(card_one, card_two) -> bool:
     v1, v2 = value_of_card(card_one), value_of_card(card_two)
     return v1 == v2
 
-print(can_split_pairs('10','J'))
+
 def can_double_down(card_one, card_two) -> bool:
     """Determine if a blackjack player can place a double down bet.
 
