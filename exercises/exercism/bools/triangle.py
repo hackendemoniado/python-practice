@@ -1,6 +1,7 @@
 def is_valid_triangle(sides: list[int]) -> bool:
-    a, b,c = sorted(sides)
+    a, b, c = sorted(sides)
     return a > 0 and a + b > c
+
 
 def equilateral(sides: list[int]) -> bool:
     a, b, c = sides

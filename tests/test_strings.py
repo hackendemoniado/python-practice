@@ -1,5 +1,10 @@
 import pytest
-from exercises.exercism.strings.strings import add_prefix, add_prefix_un, make_word_groups, remove_suffix_ness, adjective_to_verb
+
+from exercises.exercism.strings.strings import (add_prefix, add_prefix_un,
+                                                adjective_to_verb,
+                                                make_word_groups,
+                                                remove_suffix_ness)
+
 
 # ---------------------------------------------------------------------------
 # add_prefix_un
@@ -7,9 +12,9 @@ from exercises.exercism.strings.strings import add_prefix, add_prefix_un, make_w
 @pytest.mark.parametrize(
     "word, expected",
     [
-        ("happy",  "unhappy"),
-        ("fold",   "unfold"),
-        ("",       "un"),        # palabra vacía
+        ("happy", "unhappy"),
+        ("fold", "unfold"),
+        ("", "un"),  # palabra vacía
         ("real", "unreal"),  # ya comienza con 'un'
     ],
 )
@@ -23,10 +28,10 @@ def test_add_prefix_un(word, expected):
 @pytest.mark.parametrize(
     "prefix, word, expected",
     [
-        ("en",   "joy",       "enjoy"),
-        ("pre",  "view",      "preview"),
-        ("auto", "pilot",     "autopilot"),
-        ("",     "nothing",   "nothing"),  # prefijo vacío
+        ("en", "joy", "enjoy"),
+        ("pre", "view", "preview"),
+        ("auto", "pilot", "autopilot"),
+        ("", "nothing", "nothing"),  # prefijo vacío
     ],
 )
 def test_add_prefix(prefix, word, expected):
@@ -39,14 +44,14 @@ def test_add_prefix(prefix, word, expected):
 @pytest.mark.parametrize(
     "vocab_words, expected",
     [
-        (["en",  "close",  "joy",  "lighten"],
-         "en :: enclose :: enjoy :: enlighten"),
-        (["pre", "serve",  "dispose", "position"],
-         "pre :: preserve :: predispose :: preposition"),
-        (["auto", "pilot", "immune"],
-         "auto :: autopilot :: autoimmune"),
-        ([], ""),                           # lista vacía
-        (["sub", "merge"], ""),             # prefijo no permitido (fuera de check_prefix)
+        (["en", "close", "joy", "lighten"], "en :: enclose :: enjoy :: enlighten"),
+        (
+            ["pre", "serve", "dispose", "position"],
+            "pre :: preserve :: predispose :: preposition",
+        ),
+        (["auto", "pilot", "immune"], "auto :: autopilot :: autoimmune"),
+        ([], ""),  # lista vacía
+        (["sub", "merge"], ""),  # prefijo no permitido (fuera de check_prefix)
     ],
 )
 def test_make_word_groups(vocab_words, expected):
@@ -59,11 +64,11 @@ def test_make_word_groups(vocab_words, expected):
 @pytest.mark.parametrize(
     "word, expected",
     [
-        ("heaviness",  "heavy"),   # termina en 'i' después de quitar 'ness'
-        ("sadness",    "sad"),
-        ("shyness",    "shy"),
-        ("irateness",  "irate"),   # sin cambio ortográfico extra
-        ("kind",       "kind"),    # no contiene 'ness'
+        ("heaviness", "heavy"),  # termina en 'i' después de quitar 'ness'
+        ("sadness", "sad"),
+        ("shyness", "shy"),
+        ("irateness", "irate"),  # sin cambio ortográfico extra
+        ("kind", "kind"),  # no contiene 'ness'
     ],
 )
 def test_remove_suffix_ness(word, expected):
@@ -76,10 +81,10 @@ def test_remove_suffix_ness(word, expected):
 @pytest.mark.parametrize(
     "sentence, index, expected",
     [
-        ("It got dark as the sun set.",          2, "darken"),
-        ("The skies are bright.",                3, "brighten"),
-        ("He spoke loud, and everyone heard.",   2, "louden"),
-        ("That is a quick, smart fox!",          4, "smarten"),
+        ("It got dark as the sun set.", 2, "darken"),
+        ("The skies are bright.", 3, "brighten"),
+        ("He spoke loud, and everyone heard.", 2, "louden"),
+        ("That is a quick, smart fox!", 4, "smarten"),
     ],
 )
 def test_adjective_to_verb(sentence, index, expected):

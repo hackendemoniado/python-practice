@@ -4,7 +4,9 @@ How to play blackjack:    https://bicyclecards.com/how-to-play/blackjack/
 "Standard" playing cards: https://en.wikipedia.org/wiki/Standard_52-card_deck
 """
 
-VALID_CARDS = {'2','3','4','5','6','7','8','9','10','J','Q','K','A'}
+VALID_CARDS = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"}
+
+
 def is_valid_card(card: str) -> bool:
     """Verifica si la carta es válida en Blackjack."""
     return card.upper() in VALID_CARDS
@@ -24,10 +26,10 @@ def value_of_card(card: str, ace_card_eleven: bool = False) -> int | None:
     if not is_valid_card(card):
         return None
 
-    face_cards = {'J': 10, 'Q': 10, 'K': 10}
+    face_cards = {"J": 10, "Q": 10, "K": 10}
     if card in face_cards:
         return face_cards[card]
-    if card == 'A':
+    if card == "A":
         return 11 if ace_card_eleven else 1
     return int(card)
 
@@ -61,7 +63,7 @@ def value_of_ace(card_one, card_two) -> int:
     """
     v1, v2 = value_of_card(card_one), value_of_card(card_two)
 
-    if card_one == 'A' or card_two == 'A':
+    if card_one == "A" or card_two == "A":
         return 1
 
     return 11 if v1 + v2 + 11 <= 21 else 1

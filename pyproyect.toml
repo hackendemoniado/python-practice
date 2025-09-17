@@ -1,0 +1,20 @@
+[tool.black]
+line-length = 107          # Ajustado a la guía visual de PyCharm
+target-version = ["py310"]
+skip-string-normalization = false  # Mantiene comillas dobles si ya están en el código
+
+[tool.isort]
+profile = "black"
+line_length = 107
+
+[tool.flake8]
+max-line-length = 107
+extend-ignore = [
+    "E203",  # Black maneja los espacios antes de :
+    "W503"   # Black prefiere saltos de línea después de operadores binarios
+]
+
+[tool.mypy]
+python_version = "3.10"
+ignore_missing_imports = true
+disallow_untyped_defs = false

@@ -2,6 +2,7 @@
 
 check_prefix = {"en", "pre", "auto", "inter"}
 
+
 def add_prefix_un(word):
     """Take the given word and add the 'un' prefix.
 
@@ -40,6 +41,7 @@ def make_word_groups(vocab_words):
 
     return " :: ".join([prefix, *(prefix + w for w in words)])
 
+
 def remove_suffix_ness(word):
     """Remove the suffix from the word while keeping spelling in mind.
 
@@ -50,6 +52,7 @@ def remove_suffix_ness(word):
     """
     word = word.removesuffix("ness")
     return word[:-1] + "y" if word.endswith("i") else word
+
 
 def adjective_to_verb(sentence, index):
     """Change the adjective within the sentence to a verb.
