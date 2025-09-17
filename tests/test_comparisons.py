@@ -1,5 +1,3 @@
-import pytest
-
 from exercises.exercism.comparisons.black_jack import (can_double_down,
                                                        can_split_pairs,
                                                        higher_card,
