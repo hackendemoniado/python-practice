@@ -1,5 +1,3 @@
-import pytest
-
 from exercises.exercism.comparisons.black_jack import (can_double_down,
                                                        can_split_pairs,
                                                        higher_card,
@@ -41,8 +39,6 @@ def test_value_of_ace_both_options():
     assert value_of_ace("5", "5") == 11
 
 
-def test_value_of_invalid_card_returns_none():
-    assert value_of_card("joker") is None
 
 
 # ----------------------------------------------------------

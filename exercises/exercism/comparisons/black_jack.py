@@ -12,7 +12,7 @@ def is_valid_card(card: str) -> bool:
     return card.upper() in VALID_CARDS
 
 
-def value_of_card(card: str, ace_card_eleven: bool = False) -> int | None:
+def  value_of_card(card: str, ace_card_eleven: bool = False) -> int:
     """Determine the scoring value of a card.
 
     :param ace_card_eleven: return 1 in case of False and 11 in case of True
@@ -24,7 +24,7 @@ def value_of_card(card: str, ace_card_eleven: bool = False) -> int | None:
     3.  '2' - '10' = numerical value.
     """
     if not is_valid_card(card):
-        return None
+        raise ValueError("Invalid card provided")
 
     face_cards = {"J": 10, "Q": 10, "K": 10}
     if card in face_cards:
