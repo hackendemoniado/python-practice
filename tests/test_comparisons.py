@@ -1,10 +1,12 @@
-from exercises.exercism.comparisons.black_jack import (can_double_down,
-                                                       can_split_pairs,
-                                                       higher_card,
-                                                       is_blackjack,
-                                                       is_valid_card,
-                                                       value_of_ace,
-                                                       value_of_card)
+from exercises.exercism.comparisons.black_jack import (
+    can_double_down,
+    can_split_pairs,
+    higher_card,
+    is_blackjack,
+    is_valid_card,
+    value_of_ace,
+    value_of_card,
+)
 
 
 # ----------------------------------------------------------
@@ -37,8 +39,6 @@ def test_value_of_face_cards():
 def test_value_of_ace_both_options():
     assert value_of_ace("A", "2") == 1
     assert value_of_ace("5", "5") == 11
-
-
 
 
 # ----------------------------------------------------------

@@ -12,7 +12,7 @@ def is_valid_card(card: str) -> bool:
     return card.upper() in VALID_CARDS
 
 
-def  value_of_card(card: str, ace_card_eleven: bool = False) -> int:
+def value_of_card(card: str, ace_card_eleven: bool = False) -> int:
     """Determine the scoring value of a card.
 
     :param ace_card_eleven: return 1 in case of False and 11 in case of True
